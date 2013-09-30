@@ -57,7 +57,6 @@ public class ByteCipher {
     }
 
     public static String decodeFancy(String text) {
-        System.out.println("Input Text: " + text);
         assert (text.length() % 2 == 0);
         StringBuilder hexDecoded = new StringBuilder();
         int n = text.length() >> 1;

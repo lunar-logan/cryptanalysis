@@ -5,6 +5,7 @@
 package crypto;
 
 import crypto.util.ByteCipher;
+import crypto.util.Generator;
 
 /**
  *
@@ -17,13 +18,11 @@ public class Crypto {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-//        System.out.println(Integer.parseInt("1100", 2));
-//        System.out.println(ByteCipher.encode(45698712325662259L));
-//        System.out.println(ByteCipher.encode(1));
 //        String hex = ByteCipher.decode("hqrtkrnhongpnipn");
 //        System.out.println(hex);
 //        System.out.println(ByteCipher.encode(Long.decode(hex)));
 //        System.out.println(ByteCipher.decodeFancy("hqrtkrnhongpnipn"));
-        System.out.println(ByteCipher.encode(" 0x  2b ce 5c 82 98 1a   83 a8 "));
+//        System.out.println(ByteCipher.encode(" 0x  2b ce 5c 82 98 1a   83 a8 "));
+        Generator.generatePairs(128, 6458);
     }
 }
