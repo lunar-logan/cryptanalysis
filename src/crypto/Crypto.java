@@ -4,6 +4,8 @@
  */
 package crypto;
 
+import crypto.util.ByteCipher;
+
 /**
  *
  * @author ANURAG
@@ -16,5 +18,7 @@ public class Crypto {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println(Integer.parseInt("1100", 2));
+        System.out.println(ByteCipher.encode(45698712325662259L));
+        System.out.println(ByteCipher.encode(1));
     }
 }

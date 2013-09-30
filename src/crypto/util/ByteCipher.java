@@ -14,8 +14,10 @@ public class ByteCipher {
 
     public static String encode(long num) {
         String binary = Long.toBinaryString(num);
+//        System.out.println("Binary: " + binary);
         binary = addBinaryPadding(binary, BLOCK_SIZE);
-        assert (binary.length() == 64); // binary must be of size 64
+//        System.out.println("Binary after padding: " + binary);
+        assert (binary.length() == BLOCK_SIZE); // binary must be of size 64
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < 16; i++) {
             int j = i * 4;
@@ -26,6 +28,32 @@ public class ByteCipher {
             output.append(c);
         }
         return output.toString();
+    }
+
+    public static String decode(String text) {
+        assert (text.length() % 2 == 0);
+        StringBuilder hexDecoded = new StringBuilder();
+        int n = text.length() >> 1;
+        for (int i = 0; i < n; i++) {
+            int j = i * 2; //use i + i for speedup
+            int c0 = text.charAt(j) - 'f';
+            int c1 = text.charAt(j + 1) - 'f';
+            hexDecoded.append(c0).append(c1);
+        }
+        return hexDecoded.toString();
+    }
+
+    public static String decodeFancy(String text) {
+        assert (text.length() % 2 == 0);
+        StringBuilder hexDecoded = new StringBuilder();
+        int n = text.length() >> 1;
+        for (int i = 0; i < n; i++) {
+            int j = i * 2; //use i + i for speedup
+            int c0 = text.charAt(j) - 'f';
+            int c1 = text.charAt(j + 1) - 'f';
+            hexDecoded.append(c0).append(c1).append(" ");
+        }
+        return hexDecoded.toString();
     }
 
     private static String addBinaryPadding(String binaryData, int finalLength) {
