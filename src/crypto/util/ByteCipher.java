@@ -38,12 +38,14 @@ public class ByteCipher {
             int j = i * 2; //use i + i for speedup
             int c0 = text.charAt(j) - 'f';
             int c1 = text.charAt(j + 1) - 'f';
-            hexDecoded.append(c0).append(c1);
+            int c2 = (c0 << 4) | c1;
+            hexDecoded.append(Integer.toHexString(c2));
         }
         return hexDecoded.toString();
     }
 
     public static String decodeFancy(String text) {
+        System.out.println("Input Text: " + text);
         assert (text.length() % 2 == 0);
         StringBuilder hexDecoded = new StringBuilder();
         int n = text.length() >> 1;
@@ -51,7 +53,8 @@ public class ByteCipher {
             int j = i * 2; //use i + i for speedup
             int c0 = text.charAt(j) - 'f';
             int c1 = text.charAt(j + 1) - 'f';
-            hexDecoded.append(c0).append(c1).append(" ");
+            int c2 = (c0 << 4) | c1;
+            hexDecoded.append(Integer.toHexString(c2)).append(" ");
         }
         return hexDecoded.toString();
     }
