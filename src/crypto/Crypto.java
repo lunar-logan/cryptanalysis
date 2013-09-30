@@ -15,5 +15,6 @@ public class Crypto {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.println(Integer.parseInt("1100", 2));
     }
 }
