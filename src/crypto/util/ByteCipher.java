@@ -12,6 +12,13 @@ public class ByteCipher {
 
     private static final int BLOCK_SIZE = 64; // 64 bit block
 
+    public static String encode(String num) {
+        if (num.contains(" ")) {
+            num = num.replaceAll(" +", "");
+        }
+        return encode(Long.decode(num));
+    }
+
     public static String encode(long num) {
         String binary = Long.toBinaryString(num);
 //        System.out.println("Binary: " + binary);
@@ -30,6 +37,11 @@ public class ByteCipher {
         return output.toString();
     }
 
+    /**
+     *
+     * @param text
+     * @return a hex dump
+     */
     public static String decode(String text) {
         assert (text.length() % 2 == 0);
         StringBuilder hexDecoded = new StringBuilder();
@@ -41,7 +53,7 @@ public class ByteCipher {
             int c2 = (c0 << 4) | c1;
             hexDecoded.append(Integer.toHexString(c2));
         }
-        return hexDecoded.toString();
+        return "0x" + hexDecoded.toString();
     }
 
     public static String decodeFancy(String text) {
